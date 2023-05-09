@@ -16,3 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/message', function () {
+    return "Hello, I'm using the laravel fraemwork version 10";
+});
+
+/* Ruta con parametro no opcional */
+Route::get('/message/{name}', function ($name) {
+    return "Hello, I'm $name";
+});
+
+/* Ruta con parametro opcional */
+Route::get('/message-v2/guest/{name?}', function ($name = "Usuario visitante, no identificado") {
+    return "Hello, I'm $name";
+});
+

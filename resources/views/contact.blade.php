@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Prueba laravel 10</h2>
+    <h2>Contact works!</h2>
 </body>
 </html>
