@@ -1,0 +1,45 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.card-container {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos personalizados para los controles del slider */
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgb(154, 147, 147);
+    /* Cambia el color de fondo */
+    color: #000000;
+    /* Cambia el color del texto */
+    opacity: 0.7;
+    /* Cambia la opacidad */
+}
+.carousel-caption {
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* Agrega estilos para los íconos de los controles */
+    font-size: 35px;
+    /* Cambia el tamaño del ícono */
+    background-color: #504e4e;
+    /* Cambia el color de fondo del ícono */
+    color: #000000;
+    /* Cambia el color del ícono */
+    border-radius: 50%;
+    /* Aplica un borde redondeado al ícono */
+    padding: 5px;
+    /* Añade un espacio interno alrededor del ícono */
+}

@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,25 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/message', function () {
-    return "Hello, I'm using the laravel fraemwork version 10";
-});
+Route::resource('/posts', PostController::class);
+Route::resource('/categories', CategoryController::class);
 
-/* Ruta con parametro no opcional */
-Route::get('/message/{name}', function ($name) {
-    return "Hello, I'm $name";
-});
 
-/* Ruta con parametro opcional */
-Route::get('/message-v2/guest/{name?}', function ($name = "Usuario visitante, no identificado") {
-    return "Hello, I'm $name";
-});
-
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
