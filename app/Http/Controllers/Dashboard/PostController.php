@@ -35,7 +35,8 @@ class PostController extends Controller
         /* if (!Gate::allows('create', $post)) {
             abort(403);
         } */
-        return view('dashboard.post.create', compact('categories', 'post'));
+        $task = 'create';
+        return view('dashboard.post.create', compact('categories', 'post','task'));
     }
 
     /**
