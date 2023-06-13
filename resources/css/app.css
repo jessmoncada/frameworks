@@ -32,7 +32,7 @@ h3{
 
 /* ******************** form */
 .form-control {
-    @apply block rounded-sm shadow-sm bg-purple-50 w-full
+    @apply block rounded-sm shadow-sm bg-indigo-50 w-full
 }
 label {
     @apply mt-2 block

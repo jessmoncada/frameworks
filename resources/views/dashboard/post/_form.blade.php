@@ -43,4 +43,7 @@
         <input type="file" name="image" id="image">
     </div>
 @endif
-<input class="btn btn-primary mt-3" type="submit" value="Guardar">
+<div class="form-group">
+    <a class="btn btn-primary mt-2" href="{{ url()->previous() }}" class="btn btn-secondary">Regresar</a>
+    <input class="btn btn-primary mt-2" type="submit" value="Guardar">
+</div>
