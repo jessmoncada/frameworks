@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(2);
         /* if (!Gate::allows('index', $posts[0])) {
             abort(403);
         } */
@@ -46,7 +46,7 @@ class PostController extends Controller
     {
         $post = new Post($request->validated());
         $post->save();
-        return to_route('posts.index')->with('status', "Nuevo post creado");
+        return to_route('post.index')->with('status', "Nuevo post creado");
     }
 
     /**

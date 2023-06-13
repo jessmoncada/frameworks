@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\PutRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Category\StoreRequest;
 
 class CategoryController extends Controller
@@ -14,10 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->hasPermissionTo('editor.category.index')){
+            return abort(403);
+        }
+
         $categories = Category::paginate(2);
-        /* if (!Gate::allows('index', $posts[0])) {
-            abort(403);
-        } */
         return view('dashboard.category.index', compact('categories'));
     }
 
@@ -66,7 +68,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PutRequest $request, string $id)
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());

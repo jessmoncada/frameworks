@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layout')
 @section('content')
     <div class="content-wrapper">
         <h1>Actualizar categoría {{ $category->title }}</h1>
