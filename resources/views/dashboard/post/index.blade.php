@@ -1,9 +1,8 @@
 @extends('dashboard.layout')
 
 @section('content')
-    @can('guest.post.create')
-        <a class="btn btn-success my-3" href="{{ route('post.create') }}">Crear</a>
-    @endcan
+    <a class="btn btn-success my-3" href="{{ route('post.create') }}">Crear publicación</a>
+
     <table class="table mb-3">
         <thead>
             <tr>
@@ -35,18 +34,16 @@
                         {{ $p->posted }}
                     </td>
                     <td>
-                        @can('guest.post.update')
-                            <a class="mt-2 btn btn-primary" href="{{ route('post.edit', $p) }}">Editar</a>
-                        @endcan
+                        <a class="mt-2 btn btn-primary" href="{{ route('post.edit', $p) }}">Editar</a>
+
                         <a class="mt-2 btn btn-primary" href="{{ route('post.show', $p) }}">Ver</a>
 
-                        @can('guest.post.destroy')
-                            <form action="{{ route('post.destroy', $p) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button class="mt-2 btn btn-danger" type="submit">Eliminar</button>
-                            </form>
-                        @endcan
+
+                        <form action="{{ route('post.destroy', $p) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="mt-2 btn btn-danger" type="submit">Eliminar</button>
+                        </form>
 
                     </td>
                 </tr>

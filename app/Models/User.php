@@ -48,12 +48,14 @@ class User extends Authenticatable
         return $this->rol == "admin";
     }
 
+
     public function accessDashboard(): bool
     {
-        return $this->hasRole('guest');
+        return $this->hasRole('Editor');
     }
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 }

@@ -15,10 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->hasPermissionTo('editor.category.index')){
+        /*  if(!Auth::user()->hasPermissionTo('editor.category.index')){
             return abort(403);
         }
-
+ */
         $categories = Category::paginate(2);
         return view('dashboard.category.index', compact('categories'));
     }
@@ -40,9 +40,8 @@ class CategoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $category = new Category($request->validated());
-        $category->save();
-        return redirect()->route('categories.index')->with('status', 'Nueva categoría creada');
+        Category::create($request->validated());
+        return redirect()->route('category.index')->with('status', 'Nueva categoría creada');
     }
 
     /**
@@ -58,9 +57,8 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
 
         return view('dashboard.category.edit', compact('category'));
     }
@@ -68,22 +66,23 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PutRequest $request, string $id)
+    public function update(PutRequest $request, Category $category)
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
+        $category->update($request->validated());
 
-        return redirect()->route('categories.index')->with('status', 'Categoría actualizada exitosamente');
+        return redirect()->route('category.index')->with('status', 'Categoría actualizada exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        /* if(!Auth::user()->hasPermissionTo('editor.category.destroy')){
+            return abort(403);
+        } */
 
-        return redirect()->route('categories.index')->with('status', 'Categoría eliminada exitosamente');
+        $category->delete();
+        return to_route("category.index")->with('status', "Registro eliminado.");
     }
 }

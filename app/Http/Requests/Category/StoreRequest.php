@@ -22,8 +22,8 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|max:500',
-            'slug' => 'required|min:5|max:500|unique:categories',
+            'title' => 'min:5|max:500',
+            'slug' => 'min:5|max:500',
         ];
     }
 }
